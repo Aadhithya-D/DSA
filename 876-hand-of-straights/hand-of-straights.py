@@ -10,7 +10,6 @@ class Solution:
             else:
                 d[i] += 1
         o = []
-        # print(d)
         while d:
             t = []
             i = 0
@@ -20,7 +19,6 @@ class Solution:
                     return False
                 if len(l) < groupSize-c:
                     return False
-                # print(l[i], i)
                 if t != []:
                     if t[-1] == l[i]-1:
                         t.append(l[i])
@@ -36,5 +34,4 @@ class Solution:
                 i+=1
                 c+=1
             o.append(t)
-            # print(t, o, l, d)
         return True
