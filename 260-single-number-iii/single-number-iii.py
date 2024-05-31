@@ -1,13 +1,16 @@
 class Solution:
     def singleNumber(self, nums: List[int]) -> List[int]:
-        d = {}
+        xor = 0
         for i in nums:
-            if i in d:
-                d[i] += 1
+            xor ^= i
+        a = 0
+        b = 0
+        diff_bit  = 1
+        while not (diff_bit & xor):
+            diff_bit = diff_bit << 1
+        for i in nums:
+            if i & diff_bit:
+                a ^= i
             else:
-                d[i] = 1
-        o = []
-        for i in d:
-            if d[i] == 1:
-                o.append(i)
-        return o
+                b ^= i
+        return a, b
